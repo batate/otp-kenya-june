@@ -4,7 +4,7 @@ defmodule Kumbuka.Eraser do
   def new(text, no_of_steps) do
     __struct__(text: text, steps: build_steps(text, no_of_steps))
   end
-
+  
   defp build_steps(text, no_of_steps) do
     size = String.length(text)
 
