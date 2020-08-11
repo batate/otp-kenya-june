@@ -1,18 +1,16 @@
 defmodule Kumbuka do
-  @moduledoc """
-  Documentation for `Kumbuka`.
-  """
+  alias Kumbuka.Server
 
-  @doc """
-  Hello world.
+  def start(text, no_of_steps) do
+    {:ok, pid} = GenServer.start_link(Server, {text, no_of_steps})
+    pid
+  end
 
-  ## Examples
+  def erase(pid) do
+    GenServer.cast(pid, :eraser)
+  end
 
-      iex> Kumbuka.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def get(pid) do
+    GenServer.call(pid, :new_text)
   end
 end

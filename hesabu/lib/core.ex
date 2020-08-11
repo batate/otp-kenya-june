@@ -1,6 +1,6 @@
 defmodule Hesabu.Core do
-  def new do
-    0
+  def new(number \\ 0) do
+    number
   end
 
   def inc(count) do

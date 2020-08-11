@@ -4,7 +4,7 @@ defmodule Hesabu.Server do
   alias Hesabu.Core
 
   def init(count) do
-    {:ok, count}
+    {:ok, Core.new(count)}
   end
 
   def handle_cast(:inc, count) do
