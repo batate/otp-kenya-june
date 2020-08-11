@@ -6,12 +6,7 @@ defmodule Kumbuka.Eraser do
   end
 
   def eraser(%__MODULE__{text: text, steps: [head | tail]} = passage) do
-    if Enum.count(passage.steps) > 1 do
-      %__MODULE__{text: delete_chars(text, head), steps: tail}
-      |> eraser()
-    else
-      %__MODULE__{text: delete_chars(text, head), steps: tail}
-    end
+    %__MODULE__{text: delete_chars(text, head), steps: tail}
   end
 
   defp delete_chars(text, steps) do
