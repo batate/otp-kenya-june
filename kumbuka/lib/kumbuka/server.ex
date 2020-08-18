@@ -6,11 +6,12 @@ defmodule Kumbuka.Eraser.Server do
     {:ok, Eraser.new(text, steps)}
   end
 
-  def handle_cast(:erase, eraser) do
-    {:noreply, Eraser.eraser(eraser)}
+  def handle_call(:erase, _from, eraser) do
+    erased = Eraser.eraser(eraser)
+    {:reply, erased.text, erased}
   end
 
   def handle_call(:progress, _from, eraser) do
-    {:reply, eraser, eraser}
+    {:reply, eraser.text, eraser}
   end
 end
