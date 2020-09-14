@@ -4,10 +4,8 @@ defmodule Kumbuka do
   """
   alias Kumbuka.Server
 
-  def start_link(text, steps) do
-    {:ok, server} = GenServer.start_link(Server, {text, steps})
-    print_text(server)
-    server
+  def start_link({text, steps, name}) do
+    GenServer.start_link(Server, {text, steps}, name: name)
   end
 
   def stop(pid), do: GenServer.cast(pid, :stop)
@@ -24,5 +22,9 @@ defmodule Kumbuka do
 
   def flush(name) do
     GenServer.cast(name, :flush)
+  end
+
+  def child_spec({text, steps, name}) do
+    %{id: name, start: {__MODULE__, :start_link, [{text, steps, name}]}}
   end
 end
