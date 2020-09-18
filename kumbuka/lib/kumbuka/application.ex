@@ -10,10 +10,8 @@ defmodule Kumbuka.Application do
     children = [
       # Starts a worker by calling: Kumbuka.Worker.start_link(arg)
       # {Kumbuka.Worker, arg}
-      {Kumbuka, {"i can't see them coming down my eyes so I gotta make the song cry", 4, :jayz}}
-      #another option of passing the passage where the name is similar
-      #to the passage 
-      #{Kumbuka, {Kumbuka.Passages.passage(:frank), 3, :frank}}
+      {Kumbuka.Server, {"this is a short string", 5, :pollet}},
+      {Kumbuka.Server, {"this is a slightly longer string", 5, :second}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
