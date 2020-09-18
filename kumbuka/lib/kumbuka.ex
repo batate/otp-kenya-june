@@ -27,4 +27,8 @@ defmodule Kumbuka do
   def child_spec({text, steps, name}) do
     %{id: name, start: {__MODULE__, :start_link, [{text, steps, name}]}}
   end
+
+  def start_process(text, steps, name) do
+    DynamicSupervisor.start_child(Kumbuka.DynamicSupervisor, child_spec({text, steps, name}))
+  end
 end

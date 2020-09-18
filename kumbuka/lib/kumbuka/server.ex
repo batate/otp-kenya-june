@@ -6,10 +6,10 @@ defmodule Kumbuka.Server do
     IO.inspect("==============================")
     {:ok, Eraser.new(text, steps)}
   end
-
-  def start_link(text, steps, name) do
-    GenServer.start_link(__MODULE__, {text, steps}, name: name)
-  end
+# we are have another start_link in kumbuka.ex
+  # def start_link(text, steps, name) do
+  #   GenServer.start_link(__MODULE__, {text, steps}, name: name)
+  # end
 
   def handle_cast(:stop, state), do: {:stop, :normal, state}
 
@@ -26,7 +26,7 @@ defmodule Kumbuka.Server do
     {:reply, state.text, state}
   end
 
-  def child_spec({text, steps, name}) do
-    %{id: name, start: {Kumbuka.Server, :start_link, [text, steps, name]}}
-  end
+  # def child_spec({text, steps, name}) do
+  #   %{id: name, start: {Kumbuka.Server, :start_link, [text, steps, name]}}
+  # end
 end

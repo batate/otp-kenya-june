@@ -10,8 +10,9 @@ defmodule Kumbuka.Application do
     children = [
       # Starts a worker by calling: Kumbuka.Worker.start_link(arg)
       # {Kumbuka.Worker, arg}
-      {Kumbuka.Server, {"this is a short string", 5, :pollet}},
-      {Kumbuka.Server, {"this is a slightly longer string", 5, :second}}
+      {DynamicSupervisor, strategy: :one_for_one, name: Kumbuka.DynamicSupervisor}
+      # {Kumbuka, {"this is a short string", 5, :pollet}},
+      # {Kumbuka, {"this is a slightly longer string", 5, :second}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
