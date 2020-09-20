@@ -14,4 +14,3 @@ defmodule Bruce do
     """
   end
 end
-

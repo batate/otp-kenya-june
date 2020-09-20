@@ -10,7 +10,8 @@ defmodule Kumbuka.Application do
       # Starts a worker by calling: Kumbuka.Worker.start_link(arg)
       # {Kumbuka.Worker, arg}
       {Kumbuka.Server, {"this is a short string", 5, :pollet}},
-      {Kumbuka.Server, {"this is a slightly longer string", 5, :second}}
+      {Kumbuka.Server, {"this is a slightly longer string", 5, :second}},
+      {KumbukaServer, strategy: :one_for_one, name: KumbukaServer}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

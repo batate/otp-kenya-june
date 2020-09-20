@@ -9,10 +9,10 @@ defmodule Hesabu.Application do
     children = [
       # Starts a worker by calling: Hesabu.Worker.start_link(arg)
       {Hesabu.Server, {42, :wanjiku}},
-      {Hesabu.Server, {18, :pollet}}, 
-      {Hesabu.Server, {13, :magak}}, 
-      {Hesabu.Server, {9, :midigo}}, 
-      {Hesabu.Server, {13, :okoth}}, 
+      {Hesabu.Server, {18, :pollet}},
+      {Hesabu.Server, {13, :magak}},
+      {Hesabu.Server, {9, :midigo}},
+      {Hesabu.Server, {13, :okoth}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
