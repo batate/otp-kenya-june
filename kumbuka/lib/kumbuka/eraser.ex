@@ -42,4 +42,28 @@ defmodule Kumbuka.Eraser do
     |> Kernel./(no_of_steps)
     |> ceil
   end
+
+  def erase(acc) do
+    current_step = acc.steps |> step()
+
+    acc.text
+    |> String.graphemes()
+    |> Enum.with_index()
+    |> Enum.map(replace(current_step))
+    |> Enum.join()
+  end
+
+  defp step([current_step | _schedule]) do
+    current_step
+  end
+
+  defp replace(current_step) do
+    fn {char, index} ->
+      if index in current_step do
+        "_"
+      else
+        char
+      end
+    end
+  end
 end
